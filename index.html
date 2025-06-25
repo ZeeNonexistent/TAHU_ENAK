@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Penjualan Tahu Enak</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-yellow-500 p-4 text-white">
+    <nav class="flex justify-between items-center">
+      <h1 class="text-xl font-bold">Tahu Enak</h1>
+      <ul class="flex space-x-4">
+        <li><a href="#home" class="hover:underline">Home</a></li>
+        <li><a href="#produk" class="hover:underline">Produk</a></li>
+        <li><a href="#checkout" class="hover:underline">Pesan</a></li>
+        <li><a href="#about" class="hover:underline">Tentang</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="p-8 text-center bg-white">
+    <h2 class="text-3xl font-bold mb-4">Selamat Datang di Tahu Enak</h2>
+    <p class="text-lg">Nikmati tahu dengan berbagai varian rasa yang menggugah selera!</p>
+  </section>
+
+  <!-- Produk Section -->
+  <section id="produk" class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-4 rounded shadow text-center h-[24rem] flex flex-col justify-between">
+      <div class="w-full mb-2 mx-auto">
+        <img src="img/Tahu Sumedang.jpeg" alt="Tahu Original" class="w-full h-72 object-cover rounded mx-auto">
+      </div>
+      <h3 class="font-bold">Tahu Original</h3>
+      <p class="text-yellow-600">Rp 5.000</p>
+    </div>
+    <div class="bg-white p-4 rounded shadow text-center h-[24rem] flex flex-col justify-between">
+      <div class="w-full mb-2 mx-auto">
+        <img src="img/Tahu Mercon.jpeg" alt="Tahu Pedas" class="w-full h-72 object-cover rounded mx-auto">
+      </div>
+      <h3 class="font-bold">Tahu Pedas</h3>
+      <p class="text-yellow-600">Rp 6.000</p>
+    </div>
+    <div class="bg-white p-4 rounded shadow text-center h-[24rem] flex flex-col justify-between">
+      <div class="w-full mb-2 mx-auto">
+        <img src="img/Sambal_kecap_tahu.jpeg" alt="Tahu Lada Hitam" class="w-full h-72 object-cover rounded mx-auto">
+      </div>
+      <h3 class="font-bold">Tahu Lada Hitam</h3>
+      <p class="text-yellow-600">Rp 7.000</p>
+    </div>
+  </section>
+
+  <!-- Form Pemesanan -->
+  <section id="checkout" class="p-8 bg-gray-200">
+    <h2 class="text-2xl font-bold mb-4">Pesan Sekarang</h2>
+    <form id="orderForm" onsubmit="sendToWhatsApp(); return false;" class="space-y-4">
+      <input type="text" id="name" placeholder="Nama Anda" required class="border p-2 w-full rounded">
+      <select id="product" class="border p-2 w-full rounded">
+        <option value="Tahu Original">Tahu Original</option>
+        <option value="Tahu Pedas">Tahu Pedas</option>
+        <option value="Tahu Lada Hitam">Tahu Lada Hitam</option>
+      </select>
+      <input type="number" id="quantity" placeholder="Jumlah" required class="border p-2 w-full rounded">
+      <textarea id="address" placeholder="Alamat Pengiriman" required class="border p-2 w-full rounded"></textarea>
+      <button type="submit" class="bg-green-500 hover:bg-green-600 text-white p-2 rounded w-full">Pesan Sekarang</button>
+    </form>
+  </section>
+
+  <!-- Tentang Produk -->
+  <section id="about" class="p-8 bg-white">
+    <h2 class="text-xl font-bold mb-4">Tentang Kami</h2>
+    <p>Kami menjual tahu lokal berkualitas dengan berbagai rasa. Dibuat setiap hari dengan bahan segar dan tanpa bahan pengawet. Kepuasan Anda adalah prioritas kami!</p>
+  </section>
+
+  <!-- Script WhatsApp -->
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value.trim();
+      const product = document.getElementById("product").value.trim();
+      const quantity = document.getElementById("quantity").value.trim();
+      const address = document.getElementById("address").value.trim();
+
+      if (!name || !product || !quantity || !address) {
+        alert("Mohon isi semua data sebelum mengirim.");
+        return;
+      }
+
+      const message =
+        "Halo! Saya ingin memesan:\n\n" +
+        "Nama: " + name + "\n" +
+        "Produk: " + product + "\n" +
+        "Jumlah: " + quantity + "\n" +
+        "Alamat: " + address + "\n\n" +
+        "Terima kasih!";
+
+      const phoneNumber = "6285156950281";
+      const url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>

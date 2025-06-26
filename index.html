@@ -4,13 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Penjualan Tahu Enak</title>
+  <meta name="description" content="Tahu Enak - UMKM lokal yang menjual tahu berkualitas dengan berbagai varian rasa, fresh setiap hari, tanpa bahan pengawet. Pesan online, antar ke rumah!" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s forwards;
+    }
+    .fade-in.delay {
+      animation-delay: 0.5s;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .pulse:hover {
+      animation: pulse 0.7s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(16,185,129,0); }
+      100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+    }
+    .notif-success {
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #34d399;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 9999;
+      font-weight: bold;
+      font-size: 1rem;
+      opacity: 0;
+      animation: notifFadeIn 0.5s forwards;
+    }
+    @keyframes notifFadeIn {
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
   <!-- Header -->
   <header class="bg-yellow-500 p-4 text-white">
     <nav class="flex justify-between items-center">
-      <h1 class="text-xl font-bold">Tahu Enak</h1>
+      <div class="flex items-center">
+        <img src="img/logo-tahu (2).png" alt="Logo Tahu Enak" class="h-16 w-auto mr-3 rounded shadow">
+        <h1 class="text-xl font-bold">Tahu Enak</h1>
+      </div>
       <ul class="flex space-x-4">
         <li><a href="#home" class="hover:underline">Home</a></li>
         <li><a href="#produk" class="hover:underline">Produk</a></li>
@@ -22,32 +69,56 @@
 
   <!-- Hero Section -->
   <section id="home" class="p-8 text-center bg-white">
-    <h2 class="text-3xl font-bold mb-4">Selamat Datang di Tahu Enak</h2>
-    <p class="text-lg">Nikmati tahu dengan berbagai varian rasa yang menggugah selera!</p>
+    <h2 class="text-3xl font-bold mb-4 fade-in">Selamat Datang di Tahu Enak</h2>
+    <p class="text-lg fade-in delay">Nikmati tahu dengan berbagai varian rasa yang menggugah selera! 🔥🔥🔥</p>
   </section>
 
   <!-- Produk Section -->
   <section id="produk" class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="bg-white p-4 rounded shadow text-center h-[24rem] flex flex-col justify-between">
+    <div class="bg-white p-4 rounded shadow text-center h-[24rem] flex flex-col justify-between transition-transform duration-200 hover:scale-105 hover:shadow-xl">
       <div class="w-full mb-2 mx-auto">
-        <img src="img/Tahu Sumedang.jpeg" alt="Tahu Original" class="w-full h-72 object-cover rounded mx-auto">
+        <img src="img/Tahu Sumedang.jpeg" alt="Tahu Original" class="w-full h-72 object-cover rounded mx-auto" loading="lazy">
       </div>
       <h3 class="font-bold">Tahu Original</h3>
       <p class="text-yellow-600">Rp 5.000</p>
+      <div class="flex items-center justify-center mt-2">
+        <span class="text-yellow-400 text-xl">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+        <span class="ml-2 text-sm text-gray-600">(4/5)</span>
+      </div>
+      <div class="mt-2 bg-gray-100 p-2 rounded">
+        <p class="text-sm italic">"Tahu originalnya lembut dan kenyal, rasanya mantap bikin ketagiihan!"</p>
+        <span class="block text-xs text-gray-500 mt-1">- @emul</span>
+      </div>
     </div>
-    <div class="bg-white p-4 rounded shadow text-center h-[24rem] flex flex-col justify-between">
+    <div class="bg-white p-4 rounded shadow text-center h-[24rem] flex flex-col justify-between transition-transform duration-200 hover:scale-105 hover:shadow-xl">
       <div class="w-full mb-2 mx-auto">
-        <img src="img/Tahu Mercon.jpeg" alt="Tahu Pedas" class="w-full h-72 object-cover rounded mx-auto">
+        <img src="img/Tahu Mercon.jpeg" alt="Tahu Pedas" class="w-full h-72 object-cover rounded mx-auto" loading="lazy">
       </div>
       <h3 class="font-bold">Tahu Pedas</h3>
       <p class="text-yellow-600">Rp 6.000</p>
+      <div class="flex items-center justify-center mt-2">
+        <span class="text-yellow-400 text-xl">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="ml-2 text-sm text-gray-600">(5/5)</span>
+      </div>
+      <div class="mt-2 bg-gray-100 p-2 rounded">
+        <p class="text-sm italic">"Pedasnya pas, cocok buat pecinta pedas seperti saya!"</p>
+        <span class="block text-xs text-gray-500 mt-1">- @ibun</span>
+      </div>
     </div>
-    <div class="bg-white p-4 rounded shadow text-center h-[24rem] flex flex-col justify-between">
+    <div class="bg-white p-4 rounded shadow text-center h-[24rem] flex flex-col justify-between transition-transform duration-200 hover:scale-105 hover:shadow-xl">
       <div class="w-full mb-2 mx-auto">
-        <img src="img/Sambal_kecap_tahu.jpeg" alt="Tahu Lada Hitam" class="w-full h-72 object-cover rounded mx-auto">
+        <img src="img/Sambal_kecap_tahu.jpeg" alt="Tahu Lada Hitam" class="w-full h-72 object-cover rounded mx-auto" loading="lazy">
       </div>
       <h3 class="font-bold">Tahu Lada Hitam</h3>
       <p class="text-yellow-600">Rp 7.000</p>
+      <div class="flex items-center justify-center mt-2">
+        <span class="text-yellow-400 text-xl">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+        <span class="ml-2 text-sm text-gray-600">(3/5)</span>
+      </div>
+      <div class="mt-2 bg-gray-100 p-2 rounded">
+        <p class="text-sm italic">"Rasanya yang unik, dan rasa lada hitamnya kuat beda dari yang lain."</p>
+        <span class="block text-xs text-gray-500 mt-1">- @darso</span>
+      </div>
     </div>
   </section>
 
@@ -56,49 +127,111 @@
     <h2 class="text-2xl font-bold mb-4">Pesan Sekarang</h2>
     <form id="orderForm" onsubmit="sendToWhatsApp(); return false;" class="space-y-4">
       <input type="text" id="name" placeholder="Nama Anda" required class="border p-2 w-full rounded">
-      <select id="product" class="border p-2 w-full rounded">
-        <option value="Tahu Original">Tahu Original</option>
-        <option value="Tahu Pedas">Tahu Pedas</option>
-        <option value="Tahu Lada Hitam">Tahu Lada Hitam</option>
-      </select>
-      <input type="number" id="quantity" placeholder="Jumlah" required class="border p-2 w-full rounded">
+      <div id="qtyOriginalWrapper"></div>
+      <div id="qtyPedasWrapper"></div>
+      <div id="qtyLadaWrapper"></div>
       <textarea id="address" placeholder="Alamat Pengiriman" required class="border p-2 w-full rounded"></textarea>
-      <button type="submit" class="bg-green-500 hover:bg-green-600 text-white p-2 rounded w-full">Pesan Sekarang</button>
+      <button type="submit" class="bg-green-500 hover:bg-green-600 text-white p-2 rounded w-full shadow hover:shadow-lg transition duration-200 pulse" aria-label="Kirim pesanan ke WhatsApp">Pesan Sekarang</button>
     </form>
   </section>
 
   <!-- Tentang Produk -->
   <section id="about" class="p-8 bg-white">
-    <h2 class="text-xl font-bold mb-4">Tentang Kami</h2>
-    <p>Kami menjual tahu lokal berkualitas dengan berbagai rasa. Dibuat setiap hari dengan bahan segar dan tanpa bahan pengawet. Kepuasan Anda adalah prioritas kami!</p>
+    <h2 class="text-xl font-bold mb-4 border-b-2 border-yellow-400 inline-block pb-1">Tentang Kami</h2>
+    <p class="mb-4">Tahu Enak adalah UMKM lokal yang berdedikasi menghadirkan tahu berkualitas tinggi dengan berbagai varian rasa favorit. Kami percaya, makanan enak berasal dari bahan segar dan proses yang higienis.</p>
+    <ul class="list-disc pl-5 mb-4 text-gray-700">
+      <li><b>Visi:</b> Menjadi pilihan utama tahu lezat di Indonesia.</li>
+      <li><b>Keunggulan:</b> Tanpa bahan pengawet, selalu fresh setiap hari, dan harga terjangkau.</li>
+      <li><b>Pelayanan:</b> Siap antar ke rumah Anda dengan pelayanan ramah dan cepat khusus di daerah kuningan jawa barat.</li>
+    </ul>
+    <div class="mt-2 text-sm text-gray-600">
+      <b>Hubungi kami:</b> <br>
+      WhatsApp: <a href="https://wa.me/6285156950281" class="text-green-600 underline">0815-5695-0281</a><br>
+      Instagram: <a href="https://instagram.com/tahu_enak" class="text-blue-500 underline" target="_blank">@tahu_enak</a>
+    </div>
   </section>
+
+  <footer class="bg-yellow-500 text-white text-center p-3 mt-8">
+    &copy; 2024 Tahu Enak. Powered by UMKM Lokal.
+  </footer>
 
   <!-- Script WhatsApp -->
   <script>
+    function showNotifSuccess(msg) {
+      const notif = document.getElementById('notif-success');
+      notif.textContent = msg;
+      notif.style.display = 'block';
+      setTimeout(() => {
+        notif.style.display = 'none';
+      }, 1800);
+    }
+
     function sendToWhatsApp() {
       const name = document.getElementById("name").value.trim();
-      const product = document.getElementById("product").value.trim();
-      const quantity = document.getElementById("quantity").value.trim();
+      const qtyOriginal = document.getElementById("qtyOriginal") ? document.getElementById("qtyOriginal").value.trim() : '';
+      const qtyPedas = document.getElementById("qtyPedas") ? document.getElementById("qtyPedas").value.trim() : '';
+      const qtyLada = document.getElementById("qtyLada") ? document.getElementById("qtyLada").value.trim() : '';
       const address = document.getElementById("address").value.trim();
 
-      if (!name || !product || !quantity || !address) {
-        alert("Mohon isi semua data sebelum mengirim.");
+      if (!name || !address) {
+        alert("Mohon isi nama dan alamat pengiriman.");
         return;
       }
 
+      if ((qtyOriginal === '' || qtyOriginal == 0) && (qtyPedas === '' || qtyPedas == 0) && (qtyLada === '' || qtyLada == 0)) {
+        alert("Mohon isi minimal satu jumlah varian tahu.");
+        return;
+      }
+
+      let produkList = '';
+      let total = 0;
+      if (qtyOriginal && qtyOriginal != 0) {
+        produkList += `- Tahu Original: ${qtyOriginal}\n`;
+        total += parseInt(qtyOriginal) * 5000;
+      }
+      if (qtyPedas && qtyPedas != 0) {
+        produkList += `- Tahu Pedas: ${qtyPedas}\n`;
+        total += parseInt(qtyPedas) * 6000;
+      }
+      if (qtyLada && qtyLada != 0) {
+        produkList += `- Tahu Lada Hitam: ${qtyLada}\n`;
+        total += parseInt(qtyLada) * 7000;
+      }
+
+      const totalFormatted = total.toLocaleString('id-ID');
+
       const message =
-        "Halo! Saya ingin memesan:\n\n" +
+        "Halo! Saya ingin memesan atas nama:\n\n" +
         "Nama: " + name + "\n" +
-        "Produk: " + product + "\n" +
-        "Jumlah: " + quantity + "\n" +
+        "Pesanan:\n" + produkList +
         "Alamat: " + address + "\n\n" +
+        "Total: Rp " + totalFormatted + "\n\n" +
         "Terima kasih!";
 
       const phoneNumber = "6285156950281";
       const url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
 
-      window.open(url, "_blank");
+      showNotifSuccess('Pesanan Anda akan dikirim ke WhatsApp...');
+      setTimeout(() => {
+        window.open(url, "_blank");
+      }, 1500);
     }
+
+    // Fungsi untuk membuat label yang berubah jadi input saat diklik
+    function createQtyInput(wrapperId, label, inputId) {
+      const wrapper = document.getElementById(wrapperId);
+      wrapper.innerHTML = `<div class='border p-2 w-full rounded bg-white cursor-pointer text-gray-700' id='label-${inputId}'>${label}</div>`;
+      const labelDiv = document.getElementById(`label-${inputId}`);
+      labelDiv.addEventListener('click', function() {
+        wrapper.innerHTML = `<input type='number' id='${inputId}' min='0' value='' placeholder='0' class='border p-2 w-full rounded'>`;
+        document.getElementById(inputId).focus();
+      });
+    }
+    // Inisialisasi label untuk setiap varian tahu
+    createQtyInput('qtyOriginalWrapper', 'Tahu Original', 'qtyOriginal');
+    createQtyInput('qtyPedasWrapper', 'Tahu Pedas', 'qtyPedas');
+    createQtyInput('qtyLadaWrapper', 'Tahu Lada Hitam', 'qtyLada');
   </script>
+  <div id="notif-success" style="display:none;"></div>
 </body>
 </html>
